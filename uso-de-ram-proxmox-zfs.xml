@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2024-06-17T14:47:04Z</date>
+    <groups>
+        <group>
+            <uuid>0eb67c64588143049dd12eb173d9b279</uuid>
+            <name>Erick Andrade - Template</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>bebc667e3934460d87b24620f0c2bc45</uuid>
+            <template>Uso de RAM ZFS</template>
+            <name>Uso de RAM ZFS</name>
+            <description>Template criado para monitorar o Uso de Memória RAM feito pelo ARC do ZFS em ambiente Proxmox.
+
+Telegram: @erickandrade
+Blog: https://erickandrade.com.br
+E-mail: erick[@]erickandrade.com.br
+
+Zabbix Server: 6.0.29
+Zabbix Agent: 6.0.3</description>
+            <groups>
+                <group>
+                    <name>Erick Andrade - Template</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>3e5eb7368edc4718a97b9e98fddf2dbb</uuid>
+                    <name>Uso de RAM ZFS</name>
+                    <key>system.zfs.mempct</key>
+                    <value_type>FLOAT</value_type>
+                    <units>M</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>da4884467c8d46aebbc58a90370adbab</uuid>
+                            <expression>last(/Uso de RAM ZFS/system.zfs.mempct)&gt;=8000</expression>
+                            <name>Uso de RAM no {HOST.NAME} ARC ZFS é maior ou igual a 8GB</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <tags>
+                <tag>
+                    <tag>ram</tag>
+                    <value>zfs</value>
+                </tag>
+            </tags>
+        </template>
+    </templates>
+</zabbix_export>
